@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slowed + Reverb Song Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Welcome to Slowed + Reverb Song Generator</h1>
+        <form id="upload-form" enctype="multipart/form-data">
+            <label for="song">Choose a song to upload:</label>
+            <input type="file" id="song" name="song" accept="audio/*">
+            <button type="submit">Upload & Process</button>
+        </form>
+        <div id="download-section" style="display:none;">
+            <h2>Your song has been processed!</h2>
+            <a id="download-link" href="#" download>Download your slowed + reverb song</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData();
+            const songFile = document.getElementById('song').files[0];
+            formData.append('song', songFile);
+
+            // Example: Simulate processing and provide a download link
+            setTimeout(() => {
+                document.getElementById('download-section').style.display = 'block';
+                document.getElementById('download-link').href = URL.createObjectURL(songFile); // Placeholder for actual processed file URL
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
